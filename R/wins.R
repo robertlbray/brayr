@@ -1,0 +1,1 @@
+wins<-function(x, q=c(.05, .95)) pmax(pmin(x, quantile(x, q[2], na.rm=T)), quantile(x, q[1], na.rm=T))
