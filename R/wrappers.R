@@ -7,7 +7,7 @@ oj <- function(x, y){#outer join
     mt(x, .merge.dummy. = 1),
     mt(y, .merge.dummy. = 1),
     by = '.merge.dummy.'
-  ) %>% 
+  ) %>%
     sl(-.merge.dummy.)
 }
 
@@ -34,7 +34,7 @@ rd <- function(...) reduce(...)
 
 le <- function(file.name, loc = varSave) readRDS(paste0(loc, file.name))
 
-se <- function(d, file.name, loc = varSave) saveRDS(d, paste0(loc, file.name), compress = FALSE) 
+se <- function(d, file.name, loc = varSave) saveRDS(d, paste0(loc, file.name), compress = FALSE)
 
 gb <- function(...) group_by(...)
 
@@ -64,17 +64,17 @@ ct <- function(...) dplyr::count(...)
 
 ds <- function(...) distinct(...)
 
-dd <- function(...) ddply(...)
+dd <- function(...) plyr::ddply(...)
 
-dl <- function(...) dlply(...)
+dl <- function(...) plyr::dlply(...)
 
-ld <- function(...) ldply(...)
+ld <- function(...) plyr::ldply(...)
 
-ll <- function(...) llply(...)
+ll <- function(...) plyr::llply(...)
 
-d_ <- function(...) d_ply(...)
+d_ <- function(...) plyr::d_ply(...)
 
-l_ <- function(...) l_ply(...)
+l_ <- function(...) plyr::l_ply(...)
 
 dc <- function(...) dcast(...)
 
