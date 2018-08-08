@@ -78,7 +78,7 @@ l_ <- function(...) plyr::l_ply(...)
 
 dc <- function(...) dcast(...)
 
-ml <- function(...) melt(..., factorsAsStrings = FALSE)
+ml <- function(...) melt(...)
 
 aj <- function(...) anti_join(...)
 
