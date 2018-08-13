@@ -42,8 +42,6 @@ mt <- function(...) mutate(...)
 
 tm <- function(...) transmute(...)
 
-me <- function(...) mutate_each(...)
-
 ma <- function(...) mutate_at(...)
 
 sl <- function(...) dplyr::select(...)
