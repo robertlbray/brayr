@@ -1,7 +1,3 @@
-bs <- function(...) by_slice(...)
-
-br <- function(...) by_row(...)
-
 oj <- function(x, y){#outer join
   ij(
     mt(x, .merge.dummy. = 1),
@@ -21,6 +17,8 @@ setLevels <- function(x, old.levels = x, new.levels = old.levels){
 factor_to_int <- function(x) {
   as.integer(levels(x))[x]
 }
+
+ex <- function(...) tidyr::expand(...)
 
 df <- function(...) data_frame(...)
 
