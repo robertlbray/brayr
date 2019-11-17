@@ -158,7 +158,7 @@ make.table <-
     #Bootstrap tables
     if(table.type=='Bootstrap'){
       s <- plyr::ddply(d, names(d)[-which(names(d)%in%c('samp', 'value'))], function(s) data.frame(se=sd(s$value)))
-      d <- d %>% filter(samp == 0) %>% select(-samp)
+      d <- d %>% filter(samp == 0) %>% dplyr::select(-samp)
       d <- merge(d, s, all.x = T)
     }
 
@@ -177,6 +177,7 @@ make.table <-
           value = round.fn(vec = value, n = digits)
         )
     } else if(table.type != 'Summary') {
+
       d <-
         mutate(
           d,
@@ -187,9 +188,9 @@ make.table <-
         )
       d <- merge(d, asterisk)
       d <- mutate(d, value=paste(value, asterisk, sep=''))
-      d <- d %>% select(-c(t, p, asterisk)) %>% mutate(row.type = 'est')
+      d <- d %>% dplyr::select(-c(t, p, asterisk)) %>% mutate(row.type = 'est')
       s <- mutate(d, row.type = 'se', value=paste0('(', str_trim(se), ')'))
-      d <- select(rbind(d, s) ,-se)
+      d <- dplyr::select(rbind(d, s) ,-se)
       rows <- paste(rows, "row.type", sep = "+ ")
     }
 
@@ -225,12 +226,12 @@ make.table <-
     if(table.type != 'Summary'){
       d <- mutate(d, standard.err.space = ifelse(vertical.space & (row.type == 'se'), '\\\\[-6 pt]', ''))
       d[, ncol(d)-2] <- paste0(d[, ncol(d)-2], d$standard.err.space)
-      d <- select(d, -standard.err.space)
+      d <- dplyr::select(d, -standard.err.space)
     }
 
     #Duplicates
     if(remove.duplicates){
-      if(table.type != 'Summary') d<-select(d, -row.type)
+      if(table.type != 'Summary') d<-dplyr::select(d, -row.type)
       for(i in 1:nrows){
         var <- row.vars[i]
         for(j in nrow(d):2){
@@ -244,7 +245,7 @@ make.table <-
           if(d[j, 'row.type'] == 'se') d[j, var] <- ''
         }
       }
-      d<-select(d, -row.type)
+      d<-dplyr::select(d, -row.type)
     }
 
 
