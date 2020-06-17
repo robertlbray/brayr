@@ -224,7 +224,7 @@ make.table <-
 
     #Add space after standard error rows
     if(table.type != 'Summary'){
-      d <- mutate(d, standard.err.space = ifelse(vertical.space & (row.type == 'se'), '\\\\[-6 pt]', ''))
+      d <- mutate(d, standard.err.space = ifelse(vertical.space & (row.type == 'se'), '\\\\[-12 pt]', ''))
       d[, ncol(d)-2] <- paste0(d[, ncol(d)-2], d$standard.err.space)
       d <- dplyr::select(d, -standard.err.space)
     }
